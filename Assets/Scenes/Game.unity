@@ -932,7 +932,7 @@ MonoBehaviour:
   pathHolder: {fileID: 887387681}
   speed: 5
   stopTime: 0.25
-  turnSpeed: 2.5
+  turnSpeed: 1.25
 --- !u!114 &660011745
 MonoBehaviour:
   m_ObjectHideFlags: 0
