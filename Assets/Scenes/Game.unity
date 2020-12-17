@@ -861,7 +861,7 @@ MonoBehaviour:
   pathHolder: {fileID: 887387681}
   speed: 5
   stopTime: 0.25
-  turnSpeed: 1.25
+  turnSpeed: 3.5
 --- !u!114 &660011745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -874,9 +874,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb2446557c5644548931f773a59adaa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attacking: 0
   viewDistance: 5
+  attackDelay: 2
   viewAngle: 45
   fovMeshRes: 75
+  damage: 5
   viewBlockingMask:
     serializedVersion: 2
     m_Bits: 768
@@ -23456,9 +23459,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb2446557c5644548931f773a59adaa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attacking: 0
   viewDistance: 5
+  attackDelay: 2
   viewAngle: 45
   fovMeshRes: 75
+  damage: 5
   viewBlockingMask:
     serializedVersion: 2
     m_Bits: 768
