@@ -8,6 +8,8 @@ public class PlayerControler : MonoBehaviour
 {
     public Interactable focus;
 
+    public int health = 100;
+
     Camera cam;
     PlayerMotor motor;
 
