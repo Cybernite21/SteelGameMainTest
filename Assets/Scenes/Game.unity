@@ -16989,6 +16989,7 @@ GameObject:
   - component: {fileID: 1825931494}
   - component: {fileID: 1825931493}
   - component: {fileID: 1825931492}
+  - component: {fileID: 1825931495}
   m_Layer: 8
   m_Name: HealPad
   m_TagString: Untagged
@@ -17004,7 +17005,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1825931490}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 23.802, y: 0.18, z: -15.42}
+  m_LocalPosition: {x: 23.03, y: 0.18, z: -14.46}
   m_LocalScale: {x: 2.1267154, y: 0.117137246, z: 2.2386477}
   m_Children:
   - {fileID: 756872979}
@@ -17074,6 +17075,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1825931490}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1825931495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825931490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b99edd7af0227d468c2d0feef3c3231, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healing: 0
+  delay: 1
 --- !u!4 &1835271205 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9037351210855692250, guid: 3c141970a07bac04cbc1757a691fa87a,
