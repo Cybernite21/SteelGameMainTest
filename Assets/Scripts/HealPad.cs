@@ -26,25 +26,29 @@ public class HealPad : MonoBehaviour
         while(healing)
         {
             plrCtrl.health += 2;
-            yield return new WaitForSeconds(delay);
-            yield return null;
+            plrCtrl.health = Mathf.Clamp(plrCtrl.health, 0, 100);
+            yield return new WaitForSecondsRealtime(delay);
+            yield return new WaitForEndOfFrame();
         }
         yield return null;
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.TryGetComponent<PlayerControler>(out plrCtrl))
+        if(other.gameObject.TryGetComponent<PlayerControler>(out plrCtrl))
         {
-            healing = true;
-            StartCoroutine(heal());
+            if (!healing)
+            {
+                healing = true;
+                StartCoroutine(heal());
+            }
         }
     }
 
     void OnTriggerExit(Collider other)
     {
         PlayerControler plrCtrl;
-        if (other.TryGetComponent<PlayerControler>(out plrCtrl))
+        if (other.gameObject.TryGetComponent<PlayerControler>(out plrCtrl))
         {
             healing = false;
             StopCoroutine(heal());
