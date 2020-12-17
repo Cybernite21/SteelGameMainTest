@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public static event System.Action plrCaught;
+    //public static event System.Action plrCaught;
+
+    public bool attacking = false;
 
     public float viewDistance = 3f;
+    public float attackDelay = 2f;
     public float viewAngle = 45f;
     public static float plrCatchTimer = 1f;
 
     [Range(4, 100)]
     public int fovMeshRes;
+
+    public int damage = 5;
 
     Vector3[] verticiesAdv; 
 
@@ -73,11 +78,24 @@ public class Enemy : MonoBehaviour
         GetComponent<Renderer>().material.color = Color.Lerp(originalColor, caughtPlrColor, plrVisibleTimer / plrCatchTimer);
         if(plrVisibleTimer == plrCatchTimer)
         {
-            if(plrCaught != null)
+            if(!attacking)
             {
-                plrCaught();
+                StartCoroutine(dealDamage());
             }
         }
+    }
+
+    IEnumerator dealDamage()
+    {
+        attacking = true;
+        while(plrVisibleTimer == plrCatchTimer)
+        {
+            plr.gameObject.GetComponent<PlayerControler>().health -= damage;
+            yield return new WaitForSecondsRealtime(attackDelay);
+            yield return new WaitForEndOfFrame();
+        }
+        attacking = false;
+        yield return null;
     }
 
     void drawLine()

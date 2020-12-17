@@ -6,6 +6,8 @@ using UnityEngine.Networking;
 [RequireComponent(typeof(PlayerMotor))]
 public class PlayerControler : MonoBehaviour
 {
+    public static event System.Action dead;
+
     public Interactable focus;
 
     public int health = 100;
@@ -28,6 +30,14 @@ public class PlayerControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(health <= 0)
+        {
+            if(dead != null)
+            {
+                dead();
+            }
+        }
+
         if(Input.GetMouseButtonDown(0))
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
