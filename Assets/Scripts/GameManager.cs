@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 {
     public bool paused = false;
 
+    public GameObject pausePanel;
+
     public int frameRate = -1;
     public float plrCathTimer = 1f;
 
@@ -24,6 +26,7 @@ public class GameManager : MonoBehaviour
         //Enemy.plrCaught += restartLevel;
         PlayerControler.dead += restartLevel;
         plrCtrl = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControler>();
+        unpauseGame();
     }
 
     // Update is called once per frame
@@ -58,6 +61,7 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0;
         paused = true;
+        pausePanel.SetActive(true);
     }
 
     //unpause game
@@ -65,5 +69,6 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
         paused = false;
+        pausePanel.SetActive(false);
     }
 }
