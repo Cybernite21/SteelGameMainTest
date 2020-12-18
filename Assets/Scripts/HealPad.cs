@@ -27,7 +27,7 @@ public class HealPad : MonoBehaviour
         {
             plrCtrl.health += 2;
             plrCtrl.health = Mathf.Clamp(plrCtrl.health, 0, 100);
-            yield return new WaitForSecondsRealtime(delay);
+            yield return new WaitForSeconds(delay);
             yield return new WaitForEndOfFrame();
         }
         yield return null;

@@ -91,7 +91,7 @@ public class Enemy : MonoBehaviour
         while(plrVisibleTimer == plrCatchTimer)
         {
             plr.gameObject.GetComponent<PlayerControler>().health -= damage;
-            yield return new WaitForSecondsRealtime(attackDelay);
+            yield return new WaitForSeconds(attackDelay);
             yield return new WaitForEndOfFrame();
         }
         attacking = false;
