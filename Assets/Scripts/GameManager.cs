@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public bool paused = false;
+
+    public GameObject pausePanel;
+
     public int frameRate = -1;
     public float plrCathTimer = 1f;
 
@@ -22,6 +26,7 @@ public class GameManager : MonoBehaviour
         //Enemy.plrCaught += restartLevel;
         PlayerControler.dead += restartLevel;
         plrCtrl = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControler>();
+        unpauseGame();
     }
 
     // Update is called once per frame
@@ -29,6 +34,19 @@ public class GameManager : MonoBehaviour
     {
         fpsText.text = Mathf.RoundToInt((1f / Time.deltaTime)).ToString();
         healthText.text = "Health: " + plrCtrl.health;
+
+        //Pause or unpause game
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(paused)
+            {
+                unpauseGame();
+            }
+            else
+            {
+                pauseGame();
+            }
+        }
     }
 
     void restartLevel()
@@ -36,5 +54,21 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         PlayerControler.dead -= restartLevel;
         //Enemy.plrCaught -= restartLevel;
+    }
+
+    //pause game
+    public void pauseGame()
+    {
+        Time.timeScale = 0;
+        paused = true;
+        pausePanel.SetActive(true);
+    }
+
+    //unpause game
+    public void unpauseGame()
+    {
+        Time.timeScale = 1;
+        paused = false;
+        pausePanel.SetActive(false);
     }
 }
