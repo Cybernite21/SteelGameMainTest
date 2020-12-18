@@ -53,7 +53,7 @@ public class enemyPatrol : MonoBehaviour
 
     IEnumerator turnToFace(Vector3 lookPoint)
     {
-        float timer = 0f;
+        //float timer = 0f;
         //Vector3 dirToPoint = (lookPoint - transform.position).normalized;
         Quaternion rot = Quaternion.LookRotation((lookPoint - transform.position).normalized, transform.up);
 
