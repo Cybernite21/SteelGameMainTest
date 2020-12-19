@@ -9,12 +9,16 @@ public class GameManager : MonoBehaviour
     public bool paused = false;
 
     public GameObject pausePanel;
+    public GameObject wonPanel;
+    public GameObject[] objects;
 
     public int frameRate = -1;
     public float plrCathTimer = 1f;
+    int pointsToWin = 0;
 
     public Text fpsText;
     public Text healthText;
+    public Text pointsText;
 
     PlayerControler plrCtrl;
 
@@ -26,6 +30,11 @@ public class GameManager : MonoBehaviour
         //Enemy.plrCaught += restartLevel;
         PlayerControler.dead += restartLevel;
         plrCtrl = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControler>();
+        objects = GameObject.FindGameObjectsWithTag("object");
+        foreach(GameObject obj in objects)
+        {
+            pointsToWin += obj.GetComponent<TestObj>().value;
+        }
         unpauseGame();
     }
 
@@ -34,6 +43,13 @@ public class GameManager : MonoBehaviour
     {
         fpsText.text = Mathf.RoundToInt((1f / Time.deltaTime)).ToString();
         healthText.text = "Health: " + plrCtrl.health;
+        pointsText.text = Home.points.ToString();
+
+        //Check if player won
+        if(Home.points >= pointsToWin)
+        {
+            won();
+        }
 
         //Pause or unpause game
         if(Input.GetKeyDown(KeyCode.Escape))
@@ -49,7 +65,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void restartLevel()
+    public void restartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         PlayerControler.dead -= restartLevel;
@@ -70,5 +86,19 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         paused = false;
         pausePanel.SetActive(false);
+    }
+
+    public void won()
+    {
+        unpauseGame();
+        Time.timeScale = 0;
+        paused = true;
+        wonPanel.SetActive(true);
+    }
+
+    public void quit()
+    {
+        Debug.Log("Quitting");
+        Application.Quit();
     }
 }
