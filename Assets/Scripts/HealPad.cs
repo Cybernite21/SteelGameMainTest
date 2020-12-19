@@ -6,6 +6,7 @@ public class HealPad : MonoBehaviour
 {
     public bool healing = false;
     public float delay = 1f;
+    public int healStrength = 10;
 
     PlayerControler plrCtrl;
 
@@ -25,7 +26,7 @@ public class HealPad : MonoBehaviour
     {
         while(healing)
         {
-            plrCtrl.health += 2;
+            plrCtrl.health += healStrength;
             plrCtrl.health = Mathf.Clamp(plrCtrl.health, 0, 100);
             yield return new WaitForSeconds(delay);
             yield return new WaitForEndOfFrame();

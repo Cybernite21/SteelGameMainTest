@@ -1168,7 +1168,7 @@ MonoBehaviour:
   attackDelay: 2
   viewAngle: 45
   fovMeshRes: 75
-  damage: 5
+  damage: 25
   viewBlockingMask:
     serializedVersion: 2
     m_Bits: 768
@@ -17815,6 +17815,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healing: 0
   delay: 1
+  healStrength: 10
 --- !u!4 &1835271205 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9037351210855692250, guid: 3c141970a07bac04cbc1757a691fa87a,
@@ -24150,7 +24151,7 @@ MonoBehaviour:
   attackDelay: 2
   viewAngle: 45
   fovMeshRes: 75
-  damage: 5
+  damage: 25
   viewBlockingMask:
     serializedVersion: 2
     m_Bits: 768
@@ -24372,6 +24373,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 405866103}
+    - target: {fileID: 6767748994300874323, guid: 84e77bea6a8ef66448c3098a8b74edd9,
+        type: 3}
+      propertyPath: damage
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84e77bea6a8ef66448c3098a8b74edd9, type: 3}
 --- !u!1001 &7140872123482526912
