@@ -88,6 +88,11 @@ public class GameManager : MonoBehaviour
         pausePanel.SetActive(true);
     }
 
+    public void menu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     //unpause game
     public void unpauseGame()
     {
