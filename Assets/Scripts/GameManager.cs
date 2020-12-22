@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public RuntimePlatform currentPlatform;
+
     public bool paused = false;
 
     public GameObject pausePanel;
@@ -21,6 +23,12 @@ public class GameManager : MonoBehaviour
     public Text pointsText;
 
     PlayerControler plrCtrl;
+
+    //Called when script is being loaded
+    void Awake()
+    {
+        currentPlatform = Application.platform;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -78,6 +86,11 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         paused = true;
         pausePanel.SetActive(true);
+    }
+
+    public void menu()
+    {
+        SceneManager.LoadScene(0);
     }
 
     //unpause game
