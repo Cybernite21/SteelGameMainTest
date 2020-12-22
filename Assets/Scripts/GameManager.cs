@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public RuntimePlatform currentPlatform;
+    public static RuntimePlatform currentPlatform;
 
     public bool paused = false;
 

@@ -18,15 +18,20 @@ public class TestObj : Interactable
         player = GameObject.FindGameObjectWithTag("Player").transform;
         if (Input.GetMouseButtonDown(1) && hasInteracted && player.gameObject.GetComponent<PlayerControler>().holding)
         {
-            transform.parent = null;
-            gameObject.GetComponent<Rigidbody>().isKinematic = false;
-            GetComponent<Rigidbody>().AddForce(transform.forward * throwForce, ForceMode.Impulse);
-            gameObject.GetComponent<BoxCollider>().enabled = true;
-            gameObject.GetComponent<NavMeshObstacle>().enabled = true;
-            player.gameObject.GetComponent<PlayerControler>().holding = false;
-            player.gameObject.GetComponent<PlayerControler>().focus = null;
-            OnDefocused();
+            throwObj();
         }
+    }
+
+    public void throwObj()
+    {
+        transform.parent = null;
+        gameObject.GetComponent<Rigidbody>().isKinematic = false;
+        GetComponent<Rigidbody>().AddForce(transform.forward * throwForce, ForceMode.Impulse);
+        gameObject.GetComponent<BoxCollider>().enabled = true;
+        gameObject.GetComponent<NavMeshObstacle>().enabled = true;
+        player.gameObject.GetComponent<PlayerControler>().holding = false;
+        player.gameObject.GetComponent<PlayerControler>().focus = null;
+        OnDefocused();
     }
 
     public override void Interact()
